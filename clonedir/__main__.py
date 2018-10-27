@@ -50,7 +50,7 @@ def main(args=None):
                 copy = False
 
             if copy:
-                print(f'doing: {path} -> {clone_file}...', end='')
+                print(f'doing: {path} -> {clone_file}...', end='', flush=True)
                 if path.is_dir():
                     clone_file.mkdir(parents=True, exist_ok=True)
                 else:
@@ -61,7 +61,7 @@ def main(args=None):
             path = Path(path)
             source_file = args.source / path.relative_to(clone_dir)
             if source_file not in master_files:
-                print(f'doing del {path}...', end='')
+                print(f'doing del {path}...', end='', flush=True)
                 if path.is_dir():
                     path.rmdir()
                 else:
